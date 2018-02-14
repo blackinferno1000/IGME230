@@ -1,0 +1,46 @@
+body{
+ background-color: rgb(204, 0, 0);
+ margin-left: 10%;
+ margin-right: 10%;
+ 
+}
+img{
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin-right: 2em;
+}
+h1{
+    font-family: 'Oswald', sans-serif;
+}
+h2{
+    font-family: 'Oswald', sans-serif;
+}
+#projects{
+    border: .5em solid black;
+    padding: 1em;
+    margin-top: 1em;
+}
+.info{
+    font-family: 'Roboto', sans-serif;
+}
+a:hover{
+    color: rgb(127, 0, 0);
+}
+a:link{
+ color: black;
+ text-decoration: none;
+}
+a:visited {
+    color: rgb(127,38, 38);
+}
+a:active{
+    color: rgb(204, 0, 0)
+}
+#content{
+ background-color: lightgrey;
+ padding: 10px 10px 10px 10px;
+}
+.links{
+    display: inline;
+}
