@@ -1,0 +1,27 @@
+body{
+background-color: #032E52;
+font-family: 'Roboto', sans-serif;
+}
+#container{
+    background-image: url(https://img.cinemablend.com/filter:scale/cb/0/6/9/8/f/4/0698f491f59de1be5806bedf51fbc5505d0b00266143f179a8c295af7831f253.jpg?mw=600);
+    width: 480px;
+    height: 350px;
+    margin: auto;
+    margin-top: 14em;
+    border-radius: 1%;
+}
+h1{
+    font-family: 'Krona One', sans-serif;
+    text-align: center;
+    background-color: #549091;
+    border-radius: 1%;
+    opacity: .5;
+}
+footer{
+    margin-left: 5px;
+    position: absolute;
+    bottom: 12.5em ;
+}
+p{
+    font-size: 35px;
+}

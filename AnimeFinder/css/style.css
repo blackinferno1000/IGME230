@@ -1,0 +1,174 @@
+body {
+  background-color: antiquewhite;
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+#content {
+  margin-top: 1em;
+  background-color: gray;
+  display: grid;
+  grid-template-columns: .5fr .5fr .5fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  min-width: 1000px;
+  min-height: 600px;
+}
+
+#buttons {
+  display: flex;
+  margin-left: 7em;
+}
+
+#bt1 {
+  flex: 2;
+}
+
+#bt2 {
+  flex: 2;
+}
+
+#bt3 {
+  flex: 2;
+}
+
+#bt4 {
+  flex: 2;
+}
+
+#bt5 {
+  order: -4;
+  flex: 2;
+  margin-right: -2em;
+}
+
+@media screen and (max-width:800px) {
+  #buttons {
+    margin-left: 0;
+  }
+  #bt1 {
+    flex: 2;
+    margin-left: -1.3em;
+  }
+  #bt2 {
+    flex: 2;
+    margin-right: .5em;
+  }
+  #bt3 {
+    flex: 2;
+    margin-right: .5em;
+  }
+  #bt4 {
+    flex: 2;
+  }
+  #bt5 {
+    order: -4;
+    flex: 2;
+  }
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+#headImg {
+  background-image: url(https://i.pinimg.com/originals/e4/c1/57/e4c157372efb0c3778234779a45e6c66.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 200%;
+}
+
+.card {
+  width: 20em;
+  margin-top: 2em;
+}
+
+.card img {
+  height: 10em;
+}
+
+.card:nth-of-type(1) {
+  margin-left: 1em;
+}
+
+p {
+  font-size: 1.2em;
+}
+
+.card span {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card-title {
+  width: 100%;
+  height: 50%;
+}
+
+#history {
+  text-align: center;
+  font-size: 2em;
+}
+
+#items .card {
+  width: 10em;
+}
+
+#items {
+  display: block;
+  background-color: rgb(235, 0, 0);
+}
+
+#docHolder {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 1fr;
+  grid-gap: 1em;
+}
+
+#doc a {
+  text-decoration: none;
+  color: black;
+}
+
+#doc a:hover {
+  color: burlywood;
+}
+
+#doc a:active {
+  color: blue;
+}
+
+#docu {
+  text-decoration: none;
+  color: black;
+  font-size: 1.5em;
+}
+
+#docu:hover {
+  color: burlywood;
+}
+
+#docu:active {
+  color: blue;
+}
+
+#doc p {
+  font-size: 2em;
+}
+
+#links {
+  border: 1.5px solid rgb(233, 139, 139);
+  text-align: center;
+  height: 20em;
+}
+
+#exp {
+  border: 1.5px solid rgb(233, 139, 139);
+  height: 18em;
+  padding: 1em;
+}

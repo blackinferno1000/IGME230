@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Web Apps-4-HW</title>
+	<style>
+		body{border:1px solid gray;}
+	</style>
+</head>
+<body>
+<h1>My Favorites</h1>
+<h2>My Favorite Colors</h1>
+
+<ol id="colorsList">
+	
+</ol>
+
+<h2>My Favorite Foods</h1>
+
+<ol id="foodsList">
+	
+</ol>
+
+<h2>My Favorite Links</h1>
+
+<ol id="linksList">
+	
+</ol>
+
+<script>
+"use strict";
+
+// Optional - can you figure out how to pull both the key AND the value
+// from the `links` object literal?
+let links = {
+		"RIT": "http://www.rit.edu",
+		"RWAG" : "https://www.facebook.com/RWAGclub",
+		"New Media Club" : "http://newmediaclub.cias.rit.edu"
+}
+for(let key in links){
+    let a = document.createElement("li");
+    a.innerHTML = `<a href=${links[key]}>${key}</a>`;
+    let ll = document.querySelector("#linksList");
+    ll.appendChild(a);
+}
+
+</script>
+</body>
+</html>

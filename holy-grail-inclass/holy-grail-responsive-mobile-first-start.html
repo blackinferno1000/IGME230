@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Holy Grail - Responsive & Mobile First</title>
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans|Ubuntu" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<style>
+
+	header,div,nav,aside,footer{
+		border:1px solid black;
+	}
+ 
+ 
+ /* These are the small (all) screen styles! */
+	/* These applies from 0 to ??? */
+	.HolyGrail,.HolyGrail-body {
+	display: flex;
+	flex-direction: column;
+	}
+
+	.HolyGrail-nav {
+		order: -1;
+	}
+
+ /* This applies from 768px onwards */
+ /* Increase this to 769px to see how it effects the iPad */
+@media (min-width: 768px) {
+  .HolyGrail-body {
+   flex-direction: row;
+    flex: 1;
+  }
+  
+  .HolyGrail-content {
+   flex: 1;
+  }
+  
+  .HolyGrail-nav, .HolyGrail-ads {
+   flex: 0 0 12em;
+  }
+  header,div,nav,aside,footer,main {
+	border:1px solid black;
+	font-family: 'Noto Sans', sans-serif;
+}
+
+header,nav,aside,footer,main {
+	padding: 5px;
+}
+
+h2 {
+	font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+	padding:0;
+	margin:0;
+}
+	</style>
+</head>
+<body class="HolyGrail">
+  <header>
+  	<h1>Header</h1>
+  </header>
+  <div class="HolyGrail-body">
+    <main class="HolyGrail-content">
+    	<h2>Content</h2>
+     	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+   		<p><cite>This page was adapted from here: https://philipwalton.github.io/solved-by-flexbox/demos/holy-grail/</cite></p>
+    </main>
+    <nav class="HolyGrail-nav">
+    	<h2>Navigation</h2>
+    	<ul>
+    		<li>Link 1</li>
+    		<li>Link 2</li>
+    		<li>Link 3</li>
+    	</ul>
+    
+    </nav>
+    <aside class="HolyGrail-ads">
+    	<h2>Ads</h2>
+    	<ol>
+    		<li>Click Bait</li>
+    		<li>Anti-virus Solicitation</li>
+    		<li>Identity Stealer</li>
+    		<li>African Prince Letter</li>
+    	</ol>
+    	
+    
+    </aside>
+  </div>
+  <footer>Footer - &copy; 2018 Ace Coder</footer>
+</body>
+</html>

@@ -1,25 +1,37 @@
 body{
  background-color: rgb(204, 0, 0);
- margin-left: 10%;
- margin-right: 10%;
  
 }
+li:last-child{
+    padding-bottom: 0;
+}
+li{
+    font-size: 25px;
+    list-style: none;
+    padding-bottom: 1em;
+}
+p{
+    font-size: 23px;
+    margin-top: 2em;
+}
 img{
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     float: left;
     margin-right: 2em;
+    border-radius: 50%;
 }
 h1{
     font-family: 'Oswald', sans-serif;
+    border-bottom: 1px solid gray;
+    border-left-width: 150px;
 }
 h2{
     font-family: 'Oswald', sans-serif;
 }
 #projects{
-    border: .5em solid black;
-    padding: 1em;
-    margin-top: 1em;
+    border-bottom: .2em solid black;
+    padding: .5em;
 }
 .info{
     font-family: 'Roboto', sans-serif;
@@ -39,8 +51,20 @@ a:active{
 }
 #content{
  background-color: lightgrey;
+ margin: 3em;
  padding: 10px 10px 10px 10px;
+ border-radius: 1%;
 }
 .links{
     display: inline;
+}
+@media only screen and (max-width:480px){
+#content{
+    margin: 5%;
+    margin-left: 0%;
+}
+img{
+    float: none;
+    margin-left: 3em;
+}
 }

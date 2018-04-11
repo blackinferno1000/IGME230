@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Holy Grail</title>
+	<style>
+	header,div,nav,aside,footer{
+		border:1px solid black;
+	}
+	.HolyGrail {
+	display: flex;
+	min-height: 100vh;  /* 100% of viewport height */
+	flex-direction: column;
+	}
+	.HolyGrail-body {
+	display: flex;
+	flex: 1; 
+	}
+	.HolyGrail-content {
+	flex: 1;
+	}
+	/* flex: flex-grow, flex-shrink, flex-basis (starting size) */
+	.HolyGrail-nav, .HolyGrail-ads {
+	/* 12em is the width of the columns */
+	flex: 0 0 12em;
+	}
+	.HolyGrail-nav {
+	/* put the nav on the left */
+	order: -1;
+	}
+	</style>
+</head>
+<body class="HolyGrail">
+  <header>
+  	<h1>Header</h1>
+  </header>
+  <div class="HolyGrail-body">
+    <main class="HolyGrail-content">
+    	<h2>Content</h2>
+     	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+   		<p><cite>This page was adapted from here: https://philipwalton.github.io/solved-by-flexbox/demos/holy-grail/</cite></p>
+    </main>
+    <nav class="HolyGrail-nav">
+    	<h2>Navigation</h2>
+    	<ul>
+    		<li>Link 1</li>
+    		<li>Link 2</li>
+    		<li>Link 3</li>
+    	</ul>
+    
+    </nav>
+    <aside class="HolyGrail-ads">
+    	<h2>Ads</h2>
+    	<ol>
+    		<li>Click Bait</li>
+    		<li>Anti-virus Solicitation</li>
+    		<li>Identity Stealer</li>
+    		<li>African Prince Letter</li>
+    	</ol>
+    	
+    
+    </aside>
+  </div>
+  <footer>Footer - &copy; 2018 Ace Coder</footer>
+</body>
+</html>

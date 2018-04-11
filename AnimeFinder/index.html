@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+  <title>Anime Finder</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="wrapper">
+      <div class="control">
+
+        <div id="headImg">
+          <h1>Anime Finder</h1>
+          <h2>What are you looking for?</h2>
+        </div>
+
+        <nav>
+          <div class="nav-wrapper">
+            <form>
+              <div class="input-field red">
+                <input id="search" type="search" required>
+                <label class="label-icon" for="search">
+                  <i class="material-icons">search</i>
+                </label>
+                <i class="material-icons">close</i>
+              </div>
+            </form>
+          </div>
+        </nav>
+
+        <div id="history">
+          <div id="bt6">
+            <button id="hbt" class="btn waves-effect waves-light red" type="submit" name="action">History
+            </button>
+          </div>
+          <div id="items">
+            <p></p>
+          </div>
+        </div>
+
+        <a id="docu" href="documentation.html">Documentation</a>
+
+        <p>Limit:</p>
+        <div class="input-field col s12">
+          <select id="limit">
+            <option value="" disabled>Limit</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+          </select>
+        </div>
+        <p>Genre:</p>
+        <div class="input-field col s12">
+          <select id="genres">
+            <option value="" disabled>Genre</option>
+            <option value="action">Action</option>
+            <option value="adventure">Adventure</option>
+            <option value="comedy">Comedy</option>
+            <option value="thriller">Thriller</option>
+            <option value="fantasy">Fantasy</option>
+            <option value="horror">Horror</option>
+            <option value="mecha">Mecha</option>
+            <option value="mystery">Mystery</option>
+            <option value="romance">Romance</option>
+            <option value="science-fiction">Sci-Fi</option>
+            <option value="psychological">Psychological</option>
+          </select>
+        </div>
+        <div id="buttons">
+          <div id="bt1">
+            <button id="sbt" class="btn waves-effect waves-light" type="submit" name="action">Search
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+          <div id="bt2">
+            <button id="pbt" class="btn waves-effect waves-light red" type="submit" name="action">Top 10
+              <i class="material-icons right">whatshot</i>
+            </button>
+          </div>
+          <!-- <div id="bt3">
+            <button id="rbt" class="btn waves-effect waves-light grey" type="submit" name="action">Random
+              <i class="material-icons right">sync</i>
+            </button>
+          </div> -->
+          <div id="bt4">
+            <button id="nbt" class="btn waves-effect waves-light blue" type="submit" name="action">Next
+              <i class="material-icons right">arrow_forward</i>
+            </button>
+          </div>
+          <div id="bt5">
+            <button id="prbt" class="btn waves-effect waves-light blue" type="submit" name="action">Prev
+              <i class="material-icons right">arrow_back</i>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="content"></div>
+
+    </div>
+  </div>
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="materialize.js"></script>
+  <script>
+    //displays select elements in materialize css
+    $(document).ready(function () {
+      $('select').formSelect();
+    });
+  </script>
+  <script>
+    //calls function on window load
+    window.onload = init;
+
+    //initial function to set up events
+    function init() {
+      searchButton.onclick = getData;
+      popular.onclick = getData;
+      //random.onclick = getData;
+      next.onclick = getData;
+      prev.onclick = getData;
+      searchButton.onpointerup = addHistory;
+      hist.style.display = "none";
+
+    }
+
+    //fields
+    let searchButton = document.querySelector("#sbt");
+    let popular = document.querySelector("#pbt");
+    //let random = document.querySelector("#rbt");
+    let search = document.querySelector("#search");
+    let limit = document.querySelector("#limit");
+    let genres = document.querySelector("#genres");
+    let content = document.querySelector("#content");
+    let next = document.querySelector('#nbt');
+    let prev = document.querySelector('#prbt');
+    let historyButton = document.querySelector("#hbt");
+    let hist = document.querySelector("#items");
+    let off = 0;
+
+    //function to toggle history log 
+    $("#hbt").click(function () {
+      $("#items").toggle();
+    });
+
+    //funtion to add previous searches to a log
+    function addHistory() {
+      if (typeof (Storage) !== "undefined") {
+        if (sessionStorage.getItem("history") != null) {
+          let historyTmp = sessionStorage.getItem("history");
+          let oldhistoryarray = historyTmp.split('|');
+          if (oldhistoryarray.length > 3) {
+            oldhistoryarray.pop();
+          }
+          hist.innerHTML = "";
+          for (let i = 0; i < oldhistoryarray.length; i++) {
+            let p = document.createElement("p");
+            p.innerHTML = oldhistoryarray[i];
+            p.style.display = "block";
+            hist.append(p);
+          }
+        }
+
+        if (sessionStorage.getItem("history") != null) {
+          let historyTmp = sessionStorage.getItem("history");
+          historyTmp += `|${search.value}`;
+          sessionStorage.setItem("history", historyTmp);
+        } else {
+          let historyTmp = search.value;
+          sessionStorage.setItem("history", historyTmp);
+        }
+      }
+      //console.log(sessionStorage);
+    }
+
+    //function to get data 
+    let getData = (e) => {
+      let lim = limit.value;
+      lim = Number(lim);
+      let name = search.value;
+      let gn = genres.value;
+      //let rgn = genres[Math.floor(Math.random() * genres.length)].value;
+
+      //statements to assign proper http to ajax
+      let HTTP = "";
+      if (e.target.id == "sbt") {
+        HTTP =
+          `https://kitsu.io/api/edge/anime?filter[text]=${name}&filter[genres]=${gn}&page%5Blimit%5D=${lim}&page%5Boffset%5D=0`;
+      }
+      if (e.target.id == "pbt") {
+        HTTP = `https://kitsu.io/api/edge/trending/anime?page%5Blimit%5D=${lim}&page%5Boffset%5D=0`;
+      }
+      // if (e.target.id == "rbt") {
+      //   HTTP = `https://kitsu.io/api/edge/anime?filter[genres]=${rgn}&page%5Blimit%5D=${lim}&page%5Boffset%5D=0`;
+      // }
+      if (e.target.id == "nbt") {
+        content.innerHTML = "";
+        off = off + lim;
+        //console.log(off);
+        HTTP =
+          `https://kitsu.io/api/edge/anime?filter[text]=${name}&filter[genres]=${gn}&page%5Blimit%5D=${lim}&page%5Boffset%5D=${off}`;
+
+      }
+      if (e.target.id == "prbt") {
+        content.innerHTML = "";
+        off = off - lim;
+        //console.log(off);
+        if (off < 0) {
+          off = 0;
+        }
+        HTTP =
+          `https://kitsu.io/api/edge/anime?filter[text]=${name}&filter[genres]=${gn}&page%5Blimit%5D=${lim}&page%5Boffset%5D=${off}`;
+      }
+      //console.log(`loading ${HTTP}`);
+      //console.log(rgn);
+
+      //ajax call to get JSON
+      $.ajax({
+        dataType: "json",
+        url: HTTP,
+        data: null,
+        success: populateCards,
+        error: ajaxErrorHandler
+      });
+    }
+    //handles if ajax errors
+    function ajaxErrorHandler(xhr, status, error) {
+      console.log("Failed to load data");
+    }
+
+    //populates cards with information
+    function populateCards(e) {
+      //console.log(e);
+      content.innerHTML = "";
+      for (let i = 0; i < e.data.length; i++) {
+        //console.log(e.data.length);
+        let card = document.createElement("div");
+        let bigstring = `<div class="row">`;
+        bigstring += `<div class="col s12 m7">`;
+        bigstring += `<div class="card">`;
+        bigstring += `<div class="card-image">`;
+        bigstring += `<img src="${e.data[i].attributes.posterImage.small}">`;
+        bigstring += `<span class="card-title">${e.data[i].attributes.canonicalTitle}</span>`;
+        bigstring +=
+          `<span class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></span>`;
+        bigstring += `</div>`;
+        bigstring += `<div class="card-content">`;
+        bigstring += `<p>${e.data[i].attributes.synopsis}</p>`;
+        bigstring += `<p>Episodes: ${e.data[i].attributes.episodeCount}</p>`;
+        bigstring += `<p>Episode Length: ${e.data[i].attributes.episodeLength} minutes</p>`;
+        bigstring += `</div>`;
+        bigstring += `<div class="card-action">`;
+        bigstring +=
+          `<a href="https://www.youtube.com/results?search_query=${e.data[i].attributes.canonicalTitle} review">Youtube</a>`;
+        bigstring += `</div>`;
+        bigstring += `</div>`;
+        bigstring += `</div>`;
+        bigstring += `</div>`;
+        card.innerHTML = bigstring;
+        content.appendChild(card);
+      }
+    }
+  </script>
+</body>
+
+</html>

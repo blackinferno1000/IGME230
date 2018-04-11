@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css?family=Krona+One|Roboto" rel="stylesheet">
+    <title>Random Phrases 1</title>
+    
+</head>
+<body>
+    <div id="container">
+        <h1>FF:IX Phrases</h1>
+        <p id="phrase"></p>
+        <button>New Phrase</button>
+        <footer>Copyright 2018 Sean Lightfoot</footer>
+    </div>
+    <script>
+    phrases = ["You don't need a reason to help people.","How do you prove that you exist...? Maybe we don't exist...",
+    "Bah! Only a flesh wound!","I have a favor I wish to ask of you... I wish to be kidnapped right away.",
+    "To be forgotten is worse than death.","Now I mad! I cook you good!"];
+    let phrase = document.querySelector("#phrase");
+    let changePhrase = document.querySelector("button");
+    let loaded = (e) => {
+        phrase.innerHTML = phrases[Math.floor(Math.random() * phrases.length)];
+    }
+    let displayQuote = (e) =>{
+        phrase.innerHTML = phrases[Math.floor(Math.random() * phrases.length)];
+    }
+    window.onload = loaded;
+    changePhrase.addEventListener("click", displayQuote);
+    </script>
+</body>
+</html>
